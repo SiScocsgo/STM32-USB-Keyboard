@@ -1,0 +1,223 @@
+ARM GAS  C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.eabi_attribute 20, 1
+   3              		.eabi_attribute 21, 1
+   4              		.eabi_attribute 23, 3
+   5              		.eabi_attribute 24, 1
+   6              		.eabi_attribute 25, 1
+   7              		.eabi_attribute 26, 1
+   8              		.eabi_attribute 30, 2
+   9              		.eabi_attribute 34, 1
+  10              		.eabi_attribute 18, 4
+  11              		.file	"usb_device.c"
+  12              		.text
+  13              	.Ltext0:
+  14              		.cfi_sections	.debug_frame
+  15              		.section	.text.MX_USB_DEVICE_Init,"ax",%progbits
+  16              		.align	1
+  17              		.p2align 2,,3
+  18              		.global	MX_USB_DEVICE_Init
+  19              		.arch armv7-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu softvfp
+  25              	MX_USB_DEVICE_Init:
+  26              	.LFB66:
+  27              		.file 1 "Src/usb_device.c"
+   1:Src/usb_device.c **** /**
+   2:Src/usb_device.c ****   ******************************************************************************
+   3:Src/usb_device.c ****   * @file           : usb_device.c
+   4:Src/usb_device.c ****   * @version        : v2.0_Cube
+   5:Src/usb_device.c ****   * @brief          : This file implements the USB Device
+   6:Src/usb_device.c ****   ******************************************************************************
+   7:Src/usb_device.c ****   * This notice applies to any and all portions of this file
+   8:Src/usb_device.c ****   * that are not between comment pairs USER CODE BEGIN and
+   9:Src/usb_device.c ****   * USER CODE END. Other portions of this file, whether 
+  10:Src/usb_device.c ****   * inserted by the user or by software development tools
+  11:Src/usb_device.c ****   * are owned by their respective copyright owners.
+  12:Src/usb_device.c ****   *
+  13:Src/usb_device.c ****   * Copyright (c) 2019 STMicroelectronics International N.V. 
+  14:Src/usb_device.c ****   * All rights reserved.
+  15:Src/usb_device.c ****   *
+  16:Src/usb_device.c ****   * Redistribution and use in source and binary forms, with or without 
+  17:Src/usb_device.c ****   * modification, are permitted, provided that the following conditions are met:
+  18:Src/usb_device.c ****   *
+  19:Src/usb_device.c ****   * 1. Redistribution of source code must retain the above copyright notice, 
+  20:Src/usb_device.c ****   *    this list of conditions and the following disclaimer.
+  21:Src/usb_device.c ****   * 2. Redistributions in binary form must reproduce the above copyright notice,
+  22:Src/usb_device.c ****   *    this list of conditions and the following disclaimer in the documentation
+  23:Src/usb_device.c ****   *    and/or other materials provided with the distribution.
+  24:Src/usb_device.c ****   * 3. Neither the name of STMicroelectronics nor the names of other 
+  25:Src/usb_device.c ****   *    contributors to this software may be used to endorse or promote products 
+  26:Src/usb_device.c ****   *    derived from this software without specific written permission.
+  27:Src/usb_device.c ****   * 4. This software, including modifications and/or derivative works of this 
+  28:Src/usb_device.c ****   *    software, must execute solely and exclusively on microcontroller or
+  29:Src/usb_device.c ****   *    microprocessor devices manufactured by or for STMicroelectronics.
+  30:Src/usb_device.c ****   * 5. Redistribution and use of this software other than as permitted under 
+  31:Src/usb_device.c ****   *    this license is void and will automatically terminate your rights under 
+ARM GAS  C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s 			page 2
+
+
+  32:Src/usb_device.c ****   *    this license. 
+  33:Src/usb_device.c ****   *
+  34:Src/usb_device.c ****   * THIS SOFTWARE IS PROVIDED BY STMICROELECTRONICS AND CONTRIBUTORS "AS IS" 
+  35:Src/usb_device.c ****   * AND ANY EXPRESS, IMPLIED OR STATUTORY WARRANTIES, INCLUDING, BUT NOT 
+  36:Src/usb_device.c ****   * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A 
+  37:Src/usb_device.c ****   * PARTICULAR PURPOSE AND NON-INFRINGEMENT OF THIRD PARTY INTELLECTUAL PROPERTY
+  38:Src/usb_device.c ****   * RIGHTS ARE DISCLAIMED TO THE FULLEST EXTENT PERMITTED BY LAW. IN NO EVENT 
+  39:Src/usb_device.c ****   * SHALL STMICROELECTRONICS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+  40:Src/usb_device.c ****   * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  41:Src/usb_device.c ****   * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, 
+  42:Src/usb_device.c ****   * OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+  43:Src/usb_device.c ****   * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+  44:Src/usb_device.c ****   * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+  45:Src/usb_device.c ****   * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  46:Src/usb_device.c ****   *
+  47:Src/usb_device.c ****   ******************************************************************************
+  48:Src/usb_device.c ****   */
+  49:Src/usb_device.c **** 
+  50:Src/usb_device.c **** /* Includes ------------------------------------------------------------------*/
+  51:Src/usb_device.c **** 
+  52:Src/usb_device.c **** #include "usb_device.h"
+  53:Src/usb_device.c **** #include "usbd_core.h"
+  54:Src/usb_device.c **** #include "usbd_desc.h"
+  55:Src/usb_device.c **** #include "usbd_hid.h"
+  56:Src/usb_device.c **** 
+  57:Src/usb_device.c **** /* USER CODE BEGIN Includes */
+  58:Src/usb_device.c **** 
+  59:Src/usb_device.c **** /* USER CODE END Includes */
+  60:Src/usb_device.c **** 
+  61:Src/usb_device.c **** /* USER CODE BEGIN PV */
+  62:Src/usb_device.c **** /* Private variables ---------------------------------------------------------*/
+  63:Src/usb_device.c **** 
+  64:Src/usb_device.c **** /* USER CODE END PV */
+  65:Src/usb_device.c **** 
+  66:Src/usb_device.c **** /* USER CODE BEGIN PFP */
+  67:Src/usb_device.c **** /* Private function prototypes -----------------------------------------------*/
+  68:Src/usb_device.c **** 
+  69:Src/usb_device.c **** /* USER CODE END PFP */
+  70:Src/usb_device.c **** 
+  71:Src/usb_device.c **** /* USB Device Core handle declaration. */
+  72:Src/usb_device.c **** USBD_HandleTypeDef hUsbDeviceFS;
+  73:Src/usb_device.c **** 
+  74:Src/usb_device.c **** /*
+  75:Src/usb_device.c ****  * -- Insert your variables declaration here --
+  76:Src/usb_device.c ****  */
+  77:Src/usb_device.c **** /* USER CODE BEGIN 0 */
+  78:Src/usb_device.c **** 
+  79:Src/usb_device.c **** /* USER CODE END 0 */
+  80:Src/usb_device.c **** 
+  81:Src/usb_device.c **** /*
+  82:Src/usb_device.c ****  * -- Insert your external function declaration here --
+  83:Src/usb_device.c ****  */
+  84:Src/usb_device.c **** /* USER CODE BEGIN 1 */
+  85:Src/usb_device.c **** 
+  86:Src/usb_device.c **** /* USER CODE END 1 */
+  87:Src/usb_device.c **** 
+  88:Src/usb_device.c **** /**
+ARM GAS  C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s 			page 3
+
+
+  89:Src/usb_device.c ****   * Init USB device Library, add supported class and start the library
+  90:Src/usb_device.c ****   * @retval None
+  91:Src/usb_device.c ****   */
+  92:Src/usb_device.c **** void MX_USB_DEVICE_Init(void)
+  93:Src/usb_device.c **** {
+  28              		.loc 1 93 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  94:Src/usb_device.c ****   /* USER CODE BEGIN USB_DEVICE_Init_PreTreatment */
+  95:Src/usb_device.c ****   
+  96:Src/usb_device.c ****   /* USER CODE END USB_DEVICE_Init_PreTreatment */
+  97:Src/usb_device.c ****   
+  98:Src/usb_device.c ****   /* Init Device Library, add supported class and start the library. */
+  99:Src/usb_device.c ****   USBD_Init(&hUsbDeviceFS, &FS_Desc, DEVICE_FS);
+  32              		.loc 1 99 3 view .LVU1
+  93:Src/usb_device.c ****   /* USER CODE BEGIN USB_DEVICE_Init_PreTreatment */
+  33              		.loc 1 93 1 is_stmt 0 view .LVU2
+  34 0000 10B5     		push	{r4, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 14, -4
+  39              		.loc 1 99 3 view .LVU3
+  40 0002 074C     		ldr	r4, .L4
+  41 0004 0022     		movs	r2, #0
+  42 0006 2046     		mov	r0, r4
+  43 0008 0649     		ldr	r1, .L4+4
+  44 000a FFF7FEFF 		bl	USBD_Init
+  45              	.LVL0:
+ 100:Src/usb_device.c **** 
+ 101:Src/usb_device.c ****   USBD_RegisterClass(&hUsbDeviceFS, &USBD_HID);
+  46              		.loc 1 101 3 is_stmt 1 view .LVU4
+  47 000e 2046     		mov	r0, r4
+  48 0010 0549     		ldr	r1, .L4+8
+  49 0012 FFF7FEFF 		bl	USBD_RegisterClass
+  50              	.LVL1:
+ 102:Src/usb_device.c **** 
+ 103:Src/usb_device.c ****   USBD_Start(&hUsbDeviceFS);
+  51              		.loc 1 103 3 view .LVU5
+  52 0016 2046     		mov	r0, r4
+ 104:Src/usb_device.c **** 
+ 105:Src/usb_device.c ****   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
+ 106:Src/usb_device.c ****   
+ 107:Src/usb_device.c ****   /* USER CODE END USB_DEVICE_Init_PostTreatment */
+ 108:Src/usb_device.c **** }
+  53              		.loc 1 108 1 is_stmt 0 view .LVU6
+  54 0018 BDE81040 		pop	{r4, lr}
+  55              	.LCFI1:
+  56              		.cfi_restore 14
+  57              		.cfi_restore 4
+  58              		.cfi_def_cfa_offset 0
+ 103:Src/usb_device.c **** 
+  59              		.loc 1 103 3 view .LVU7
+  60 001c FFF7FEBF 		b	USBD_Start
+  61              	.LVL2:
+  62              	.L5:
+ARM GAS  C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s 			page 4
+
+
+  63              		.align	2
+  64              	.L4:
+  65 0020 00000000 		.word	hUsbDeviceFS
+  66 0024 00000000 		.word	FS_Desc
+  67 0028 00000000 		.word	USBD_HID
+  68              		.cfi_endproc
+  69              	.LFE66:
+  71              		.comm	hUsbDeviceFS,548,4
+  72              		.text
+  73              	.Letext0:
+  74              		.file 2 "d:\\vsarm\\armcc\\arm-none-eabi\\include\\machine\\_default_types.h"
+  75              		.file 3 "d:\\vsarm\\armcc\\arm-none-eabi\\include\\sys\\_stdint.h"
+  76              		.file 4 "Drivers/CMSIS/Include/core_cm3.h"
+  77              		.file 5 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h"
+  78              		.file 6 "d:\\vsarm\\armcc\\arm-none-eabi\\include\\sys\\lock.h"
+  79              		.file 7 "d:\\vsarm\\armcc\\arm-none-eabi\\include\\sys\\_types.h"
+  80              		.file 8 "d:\\vsarm\\armcc\\lib\\gcc\\arm-none-eabi\\8.2.1\\include\\stddef.h"
+  81              		.file 9 "d:\\vsarm\\armcc\\arm-none-eabi\\include\\sys\\reent.h"
+  82              		.file 10 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h"
+  83              		.file 11 "d:\\vsarm\\armcc\\arm-none-eabi\\include\\stdlib.h"
+  84              		.file 12 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
+  85              		.file 13 "Inc/usbd_desc.h"
+  86              		.file 14 "Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc/usbd_hid.h"
+  87              		.file 15 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h"
+ARM GAS  C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 usb_device.c
+C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s:16     .text.MX_USB_DEVICE_Init:0000000000000000 $t
+C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s:25     .text.MX_USB_DEVICE_Init:0000000000000000 MX_USB_DEVICE_Init
+C:\Users\Eemeli\AppData\Local\Temp\ccYh1vBT.s:65     .text.MX_USB_DEVICE_Init:0000000000000020 $d
+                            *COM*:0000000000000224 hUsbDeviceFS
+
+UNDEFINED SYMBOLS
+USBD_Init
+USBD_RegisterClass
+USBD_Start
+FS_Desc
+USBD_HID

@@ -1,0 +1,4 @@
+h
+loadbin ./build/vsarm_firmware.bin, 0x08000000
+r
+q

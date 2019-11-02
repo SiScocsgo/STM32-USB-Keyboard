@@ -1,0 +1,35 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//     {
+//         "type": "cortex-debug",
+//         "request": "launch",
+//         "servertype": "stutil",
+//         "cwd": "${workspaceRoot}",
+//         "executable": "./build/vsarm_firmware.elf",
+//         "name": "Debug (ST-Util)",
+//         "device": "STM32F103C8",
+//         "v1": false,
+//         "svdFile": "${workspaceRoot}/STM32F103xx.svd"
+//         }
+//     ]
+// }
+
+{
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "type": "cortex-debug",
+        "request": "launch",
+        "servertype": "jlink",
+        "cwd": "${workspaceRoot}",
+        "executable": "./build/vsarm_firmware.elf",
+        "name": "Debug (J-Link)",
+        "device": "STM32F103C8",
+        "interface": "swd",
+        "ipAddress": null,
+        "serialNumber": null,
+        "v1": false,
+        }
+    ]
+}

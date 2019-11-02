@@ -1,0 +1,55 @@
+{
+    "configurations": [
+        {
+            "name": "STM32 Debug",
+            "includePath": [
+                "C:\\Program Files (x86)\\SEGGER\\JLink",
+                "${env:VSARM}/armcc/arm-none-eabi/include/c++/7.3.1",
+                "${env:VSARM}/armcc/arm-none-eabi/include/c++/7.3.1/arm-none-eabi",
+                "${env:VSARM}/armcc/arm-none-eabi/include/c++/7.3.1/backward",
+                "${env:VSARM}/armcc/lib/gcc/arm-none-eabi/7.2.1/include",
+                "${env:VSARM}/armcc/lib/gcc/arm-none-eabi/7.2.1/include-fixed",
+                "${env:VSARM}/armcc/arm-none-eabi/include",
+                "${workspaceRoot}/Drivers/CMSIS/Include/",
+                "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F1xx/Include/",
+                "${workspaceRoot}/Inc",
+                "${workspaceRoot}/Src",
+                "${workspaceRoot}/Drivers/STM32F1xx_HAL_Driver/Inc",
+                "${workspaceRoot}/Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/",
+                "${workspaceRoot}/Drivers/STM32F1xx_HAL_Driver/Src",
+                "${workspaceRoot}/**"
+            ],
+            "defines": [
+                "DEBUG",
+                "DEFAULT_STACK_SIZE=2048",
+                "HSE_VALUE=8000000",
+                "OS_INCLUDE_STARTUP_INIT_MULTIPLE_RAM_SECTIONS",
+                "PB_MSGID",
+                "STM32F103",
+                "STM32F103x8",
+                "USE_DEVICE_MODE",
+                "USE_FULL_ASSERT",
+                "USE_HAL_DRIVER",
+                "USE_USB_OTG_FS"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "${workspaceRoot}",
+                    "${env:VSARM}/armcc"
+                ],
+                "limitSymbolsToIncludedHeaders": false,
+                "databaseFilename": ""
+            }
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:\\Users\\Eemeli\\AppData\\Local\\Arduino15\\packages\\esp8266\\tools\\**",
+                "C:\\Users\\Eemeli\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.2\\**"
+            ],
+            "forcedInclude": []
+        }
+    ],
+    "version": 4
+}
